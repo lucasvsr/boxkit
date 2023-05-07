@@ -1,0 +1,33 @@
+{
+  "pacman": [
+    "base-devel",
+    "bat",
+    "chezmoi",
+    "cosign",
+    "direnv",
+    "exa",
+    "fish",
+    "fzf",
+    "git",
+    "github-cli",
+    "glab",
+    "jq",
+    "just",
+    "make",
+    "micro",
+    "neofetch",
+    "neovim",
+    "openssh",
+    "python3",
+    "ripgrep",
+    "starship",
+    "zsh"
+  ],
+  "yay": [
+    "asdf-vm",
+    "fig-headless-bin",
+    "gitflow-avh",
+    "python2-bin",
+    "visual-studio-code-bin"
+  ]
+}
