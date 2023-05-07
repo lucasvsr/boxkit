@@ -14,7 +14,7 @@ ADD packages.json /tmp/packages.json
 ADD build.sh /tmp/build.sh
 
 RUN chmod 777 /tmp/*.sh
-RUN mkdir /etc/sudoers.d
+RUN mkdir -p /etc/sudoers.d
 
 RUN useradd --system --create-home $YAY_USER && echo "$YAY_USER ALL=(ALL:ALL) NOPASSWD:ALL" | tee /etc/sudoers.d/$YAY_USER
 
