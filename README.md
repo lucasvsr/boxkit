@@ -1,5 +1,8 @@
 # boxkit: meu container para uso no Fedora Silverblue
 
+[![build-boxkit](https://github.com/lucasvsr/boxkit/actions/workflows/build-boxkit.yml/badge.svg)](https://github.com/lucasvsr/boxkit/actions/workflows/build-boxkit.yml)
+
+
 Seguindo a recomendação do time do Fedora Silverblue, uso um container para instalação de ferramentas CLI e algumas aplicações desktop.
 
 ## Aplicações instaladas nesta imagem
