@@ -3,7 +3,7 @@ FROM quay.io/toolbx-images/archlinux-toolbox
 LABEL com.github.containers.toolbox="true" \
   usage="This image is meant to be used with the toolbox or distrobox command" \
   summary="A cloud-native terminal experience" \
-  maintainer="jorge.castro@gmail.com"
+  maintainer="lucasvsribeiro@outlook.com"
 
 ENV YAY_USER="yay"
 
