@@ -16,7 +16,7 @@ As aplicações embarcadas nesta imagem podem ser vistas no arquivo `packages.js
     distrobox create -i ghcr.io/lucasvsr/boxkit -n boxkit
     distrobox enter boxkit
 
-### Usando o toolbx (recomendado)
+### Usando o toolbx
 
     toolbox create -i ghcr.io/lucasvsr/boxkit -c boxkit
     toolbox enter boxkit
