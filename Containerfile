@@ -9,7 +9,6 @@ ENV YAY_USER="yay"
 
 COPY --from=docker.io/mikefarah/yq /usr/bin/yq /usr/bin/yq
 COPY --from=docker.io/testcab/yay /usr/bin/yay /usr/bin/yay
-COPY etc /etc
 
 ADD packages.json /tmp/packages.json
 ADD build.sh /tmp/build.sh
