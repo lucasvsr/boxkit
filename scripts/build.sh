@@ -14,5 +14,3 @@ then
     $MANAGER -Syu --noconfirm "${PACKAGES[@]}"
 
 fi
-
-

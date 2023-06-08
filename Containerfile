@@ -9,22 +9,26 @@ ENV YAY_USER="yay"
 
 COPY --from=docker.io/mikefarah/yq /usr/bin/yq /usr/bin/yq
 COPY --from=docker.io/testcab/yay /usr/bin/yay /usr/bin/yay
+COPY scripts /tmp/scripts
 
 ADD packages.json /tmp/packages.json
-ADD build.sh /tmp/build.sh
 
-RUN chmod 777 /tmp/*.sh
+RUN chmod 777 /tmp/scripts/*.sh
 RUN mkdir -p /etc/sudoers.d
 
 RUN useradd --system --create-home $YAY_USER && echo "$YAY_USER ALL=(ALL:ALL) NOPASSWD:ALL" | tee /etc/sudoers.d/$YAY_USER
 
-RUN /tmp/build.sh pacman
+RUN /tmp/scripts/chaotic-aur.sh
 
-USER $YAY_USER
+COPY etc /etc
+
+RUN /tmp/scripts/build.sh pacman
+
+USER ${YAY_USER}
 
 WORKDIR /home/${YAY_USER}
 
-RUN /tmp/build.sh yay
+RUN /tmp/scripts/build.sh yay
 
 USER root
 

@@ -1,5 +1,6 @@
 {
   "pacman": [
+    "asdf-vm",
     "atuin",
     "base-devel",
     "bat",
@@ -30,15 +31,13 @@
     "tmux",
     "trash-cli",
     "unzip",
+    "visual-studio-code-bin",
     "zsh"
   ],
   "yay": [
-    "asdf-vm",
-    "fig-headless-bin",
     "gitflow-avh",
     "gogh-git",
     "python2-bin",
-    "tmux-plugin-manager",
-    "visual-studio-code-bin"
+    "tmux-plugin-manager"
   ]
 }
