@@ -38,7 +38,6 @@ USER ${YAY_USER}
 WORKDIR /home/${YAY_USER}
 
 RUN /tmp/scripts/build.sh yay
-RUN /tmp/scripts/xdg-utils.sh
 
 USER root
 
