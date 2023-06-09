@@ -16,7 +16,16 @@ ADD packages.json /tmp/packages.json
 RUN chmod 777 /tmp/scripts/*.sh
 RUN mkdir -p /etc/sudoers.d
 
-RUN useradd --system --create-home $YAY_USER && echo "$YAY_USER ALL=(ALL:ALL) NOPASSWD:ALL" | tee /etc/sudoers.d/$YAY_USER
+RUN useradd --system --create-home ${YAY_USER} && echo "$YAY_USER ALL=(ALL:ALL) NOPASSWD:ALL" | tee /etc/sudoers.d/${YAY_USER}
+
+USER ${YAY_USER}
+
+WORKDIR /home/${YAY_USER}
+
+RUN /tmp/scripts/xdg-utils.sh
+
+USER root
+WORKDIR /
 
 RUN /tmp/scripts/chaotic-aur.sh
 
