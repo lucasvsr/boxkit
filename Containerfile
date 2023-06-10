@@ -9,6 +9,9 @@ ENV YAY_USER="yay"
 
 COPY --from=docker.io/mikefarah/yq /usr/bin/yq /usr/bin/yq
 COPY --from=docker.io/testcab/yay /usr/bin/yay /usr/bin/yay
+COPY --from=docker.io/testcab/yay /usr/share/bash-completion/completions/yay /usr/local/share/bash-completion/completions/yay
+COPY --from=docker.io/testcab/yay /usr/share/zsh/site-functions/_yay /usr/local/share/zsh/site-functions/_yay
+COPY --from=docker.io/testcab/yay /usr/share/fish/vendor_completions.d/yay.fish /usr/local/share/fish/vendor_completions.d/yay.fish
 COPY scripts /tmp/scripts
 
 ADD packages.json /tmp/packages.json
