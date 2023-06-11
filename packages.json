@@ -35,6 +35,7 @@
     "trash-cli",
     "unzip",
     "visual-studio-code-bin",
+    "zellij",
     "zsh"
   ],
   "yay": [
