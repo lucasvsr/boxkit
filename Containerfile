@@ -34,13 +34,13 @@ RUN /tmp/scripts/chaotic-aur.sh
 
 COPY etc /etc
 
-RUN /tmp/scripts/build.sh pacman
+RUN /tmp/scripts/install_from.sh pacman
 
 USER ${YAY_USER}
 
 WORKDIR /home/${YAY_USER}
 
-RUN /tmp/scripts/build.sh yay
+RUN /tmp/scripts/install_from.sh yay
 
 USER root
 
