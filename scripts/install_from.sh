@@ -4,7 +4,7 @@ MANAGER=$1
 
 if [ "$(yq -e ".\"$MANAGER\"[]" /tmp/packages.json)" ]; then
 
-    mapfile -t PACKAGES < <(yq -r ".\"$MANAGER\"[]" /tmp/packages.json)
+    mapfile -t PACKAGES < <(yq -r ".\"$MANAGER\"[]" < /tmp/packages.json)
 
 fi
 
