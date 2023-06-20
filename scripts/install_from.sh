@@ -1,14 +1,9 @@
 #! /usr/bin/env bash
 
 MANAGER=$1
+mapfile -t PACKAGES < <(yq -r ".\"$MANAGER\"[]" < /tmp/packages.json)
 
-if [ "$(yq -e ".\"$MANAGER\"[]" /tmp/packages.json)" ]; then
-
-    mapfile -t PACKAGES < <(yq -r ".\"$MANAGER\"[]" < /tmp/packages.json)
-
-fi
-
-if command -v "$MANAGER" > /dev/null
+if command -v "$MANAGER" > /dev/null && [ ${#PACKAGES[@]} -gt 0 ]
 then
 
     $MANAGER -Syu --noconfirm "${PACKAGES[@]}"
