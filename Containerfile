@@ -26,6 +26,7 @@ USER ${YAY_USER}
 WORKDIR /home/${YAY_USER}
 
 RUN /tmp/scripts/xdg-utils.sh
+RUN /tmp/scripts/install_from.sh yay
 
 USER root
 WORKDIR /
@@ -36,21 +37,11 @@ COPY etc /etc
 
 RUN /tmp/scripts/install_from.sh pacman
 
-USER ${YAY_USER}
-
-WORKDIR /home/${YAY_USER}
-
-RUN /tmp/scripts/install_from.sh yay
-
-USER root
-
 RUN userdel -r -f ${YAY_USER}
-
-WORKDIR /
-
 RUN rm -rf /home/${YAY_USER}
 
 RUN ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/docker
 RUN ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/flatpak
 RUN ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/rpm-ostree
 RUN ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/transactional-update
+RUN unset YAY_USER
