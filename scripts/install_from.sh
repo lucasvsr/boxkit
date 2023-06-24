@@ -8,4 +8,10 @@ then
 
     $MANAGER -Syu --noconfirm "${PACKAGES[@]}"
 
+    if [ "$MANAGER" == 'yay' ]; then
+
+        $MANAGER -Yc --noconfirm
+        
+    fi
+
 fi
