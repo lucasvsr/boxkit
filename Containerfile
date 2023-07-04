@@ -36,11 +36,15 @@ COPY etc /etc
 
 RUN /tmp/scripts/install_from.sh pacman
 
+RUN echo "LANG=pt_BR.UTF-8" > /etc/locale.conf && \
+    echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen && locale-gen
+
 RUN userdel -r -f ${YAY_USER}
 RUN rm -rf /home/${YAY_USER}
 
-RUN ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/docker
-RUN ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/flatpak
-RUN ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/rpm-ostree
-RUN ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/transactional-update
+RUN ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/docker && \
+    ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/flatpak && \
+    ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/rpm-ostree && \
+    ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/transactional-update
+
 RUN unset YAY_USER
