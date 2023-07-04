@@ -11,6 +11,10 @@ then
     if [ "$MANAGER" == 'yay' ]; then
 
         $MANAGER -Yc --noconfirm
+
+    elif [ "$MANAGER" == 'pacman' ]; then
+
+        $MANAGER -Scc --noconfirm
         
     fi
 
