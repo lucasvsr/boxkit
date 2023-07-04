@@ -5,7 +5,7 @@ LABEL com.github.containers.toolbox="true" \
   summary="A cloud-native terminal experience" \
   maintainer="lucasvsribeiro@outlook.com"
 
-ENV YAY_USER="yay"
+ENV YAY_USER "yay"
 
 COPY --from=docker.io/mikefarah/yq /usr/bin/yq /usr/bin/yq
 COPY --from=docker.io/testcab/yay /usr/bin/yay /usr/bin/yay
@@ -38,6 +38,9 @@ RUN /tmp/scripts/install_from.sh pacman
 
 RUN echo "LANG=pt_BR.UTF-8" > /etc/locale.conf && \
     echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen && locale-gen
+
+ENV LANG "pt_BR.UTF-8"
+ENV LC_ALL "pt_BR.UTF-8"
 
 RUN userdel -r -f ${YAY_USER}
 RUN rm -rf /home/${YAY_USER}
