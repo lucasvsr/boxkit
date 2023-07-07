@@ -43,6 +43,7 @@
   "yay": [
     "gitflow-avh",
     "gogh-git",
+    "openshift-client-bin",
     "python2-bin",
     "tmux-plugin-manager"
   ]
