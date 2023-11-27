@@ -26,6 +26,7 @@
     "make",
     "micro",
     "neofetch",
+    "openfortivpn",
     "openssh",
     "openvpn",
     "python3",
@@ -45,6 +46,7 @@
   "yay": [
     "gitflow-avh",
     "gogh-git",
+    "openfortivpn-webview-qt",
     "openshift-client-bin",
     "python2-bin",
     "tmux-plugin-manager"
