@@ -1,21 +1,24 @@
 #! /usr/bin/env bash
 
 MANAGER=$1
-mapfile -t PACKAGES < <(yq -r ".packages.\"$MANAGER\"[]" < /tmp/conf.yml)
+mapfile -t PACKAGES < <(yq -r ".packages.\"$MANAGER\"[]" </tmp/conf.yml)
 
-if command -v "$MANAGER" > /dev/null && [ ${#PACKAGES[@]} -gt 0 ]
-then
+if command -v "$MANAGER" >/dev/null && [ ${#PACKAGES[@]} -gt 0 ]; then
 
+    echo "=== Instalando pacotes via $MANAGER ==="
+    
     $MANAGER -Syu --noconfirm "${PACKAGES[@]}"
 
-    if [ "$MANAGER" == 'yay' ]; then
+    echo "=== Limpando cache ==="
 
+    case "${MANAGER}" in
+    'yay')
         $MANAGER -Yc --noconfirm
+        ;;
 
-    elif [ "$MANAGER" == 'pacman' ]; then
-
+    *)
         $MANAGER -Scc --noconfirm
-        
-    fi
+        ;;
+    esac
 
 fi

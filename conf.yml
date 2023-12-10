@@ -60,16 +60,12 @@ configurations:
   - package: atuin
     command: 
       fish: "command -v atuin >/dev/null && atuin init fish | source"
-      posix: "command -v atuin >/dev/null && eval \"$(atuin init $(echo $0))\""
   - package: direnv
-    command: 
+    command:
       fish: "command -v direnv >/dev/null && direnv hook fish | source"
-      posix: "command -v direnv >/dev/null && eval \"$(direnv hook $(basename $(echo $0)))\""
   - package: oc
     command: 
       fish: "command -v oc >/dev/null && oc completion fish | source"
-      posix: "command -v oc >/dev/null && eval \"$(oc completion $(basename $(echo $0)))\""
   - package: starship
     command: 
       fish: "command -v starship >/dev/null && starship init fish | source && starship completions fish | source"
-      posix: "command -v starship >/dev/null && (eval \"$(starship init $(basename $(echo $0)))\" && eval \"$(starship completions $(basename $(echo $0)))\"))"
