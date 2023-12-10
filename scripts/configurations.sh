@@ -4,7 +4,7 @@ set -oue pipefail
 
 CONFIGURATIONS_FILE=/tmp/conf.yml
 BASH_CONF_DIR=/etc/profile.d
-FISH_CONF_DIR=/etc/fish/conf.d/
+FISH_CONF_DIR=/etc/fish/conf.d
 
 readarray CONFS < <(yq -o=j -I=0 '.configurations[]' "$CONFIGURATIONS_FILE")
 
@@ -14,7 +14,7 @@ apply_conf_fish() {
     local COMMAND=$(echo "$2" | yq '.command.fish')
     local CONF_FILE=$FISH_CONF_DIR/"$PACKAGE.fish"
 
-    if [[ -n "${COMMAND}" ]]; then
+    if [[ -n "${COMMAND}" ]] && [[ ! "${COMMAND}" == "null" ]]; then
 
         echo "=== Aplicando configurações do $PACKAGE para o fish ==="
         echo "$COMMAND" >"$CONF_FILE"
@@ -45,7 +45,7 @@ apply_conf() {
     local CONF="$1"
     local PACKAGE=$(echo "$CONF" | yq '.package')
 
-    if [[ "$PACKAGE" != "null" ]]; then
+    if [[ "$PACKAGE" != "null" ]] && [[ ! "${COMMAND}" == "null" ]]; then
 
         apply_conf_posix "$PACKAGE" "$CONF"
         apply_conf_fish "$PACKAGE" "$CONF"
