@@ -33,7 +33,7 @@ apply_conf_posix() {
     if [[ -n "${COMMAND}" ]]; then
 
         echo "=== Aplicando configurações do $PACKAGE para shells posix (bash/zsh) ==="
-        eecho "$COMMAND" >"$CONF_FILE"
+        echo "$COMMAND" >"$CONF_FILE"
         echo "Criado o arquivo $CONF_FILE"
 
     fi
