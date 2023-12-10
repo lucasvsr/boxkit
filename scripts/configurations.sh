@@ -12,11 +12,13 @@ apply_conf_fish() {
 
     local PACKAGE="$1"
     local COMMAND=$(echo "$2" | yq '.command.fish')
+    local CONF_FILE=$FISH_CONF_DIR/"$PACKAGE.fish"
 
     if [[ -n "${COMMAND}" ]]; then
 
         echo "=== Aplicando configurações do $PACKAGE para o fish ==="
-        echo "$COMMAND" >$FISH_CONF_DIR/"$PACKAGE.fish"
+        echo "$COMMAND" >"$CONF_FILE"
+        echo "Criado o arquivo $CONF_FILE"
 
     fi
 
@@ -26,11 +28,13 @@ apply_conf_posix() {
 
     local PACKAGE="$1"
     local COMMAND=$(echo "$2" | yq '.command.posix')
+    local CONF_FILE="$BASH_CONF_DIR/_$PACKAGE"
 
     if [[ -n "${COMMAND}" ]]; then
 
         echo "=== Aplicando configurações do $PACKAGE para shells posix (bash/zsh) ==="
-        echo "$COMMAND" >$BASH_CONF_DIR/_"$PACKAGE"
+        eecho "$COMMAND" >"$CONF_FILE"
+        echo "Criado o arquivo $CONF_FILE"
 
     fi
 
