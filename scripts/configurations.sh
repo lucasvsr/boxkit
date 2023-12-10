@@ -66,5 +66,3 @@ if [[ ${#CONFS[@]} -gt 0 ]]; then
     done
 
 fi
-
-source /etc/profile
