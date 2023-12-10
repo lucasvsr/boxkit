@@ -14,7 +14,8 @@ COPY --from=docker.io/testcab/yay /usr/share/zsh/site-functions/_yay /usr/local/
 COPY --from=docker.io/testcab/yay /usr/share/fish/vendor_completions.d/yay.fish /usr/local/share/fish/vendor_completions.d/yay.fish
 COPY scripts /tmp/scripts
 
-ADD packages.json /tmp/packages.json
+# ADD packages.json /tmp/packages.json
+ADD conf.yml /tmp/conf.yml
 
 RUN chmod 777 /tmp/scripts/*.sh
 RUN mkdir -p /etc/sudoers.d
@@ -35,6 +36,8 @@ RUN /tmp/scripts/chaotic-aur.sh
 COPY etc /etc
 
 RUN /tmp/scripts/install_from.sh pacman
+
+RUN /tmp/scripts/configurations.sh
 
 RUN echo "LANG=pt_BR.UTF-8" > /etc/locale.conf && \
     echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen && locale-gen

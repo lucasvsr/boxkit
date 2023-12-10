@@ -1,0 +1,75 @@
+packages:
+  pacman:
+    - asdf-vm
+    - atuin
+    - base-devel
+    - bat
+    - btop
+    - chezmoi
+    - cosign
+    - direnv
+    - dog
+    - exa
+    - fish
+    - fisher
+    - fzf
+    - git
+    - github-cli
+    - glab
+    - glibc
+    - gping
+    - gum
+    - inetutils
+    - jq
+    - just
+    - kubectl
+    - make
+    - micro
+    - neofetch
+    - openfortivpn
+    - openssh
+    - openvpn
+    - python3
+    - speedtest-cli
+    - starship
+    - termius
+    - the_silver_searcher
+    - tldr
+    - tmux
+    - trash-cli
+    - ttf-firacode-nerd
+    - unzip
+    - visual-studio-code-bin
+    - zellij
+    - zsh
+  yay:
+    - gitflow-avh
+    - gogh-git
+    - openfortivpn-webview-qt
+    - openshift-client-bin
+    - python2-bin
+    - tmux-plugin-manager
+configurations:
+  - package: fish
+    command: 
+      fish: "command -v fish >/dev/null && set fish_greeting"
+  - package: asdf-vm
+    command: 
+      fish: "test -f /opt/asdf-vm/asdf.fish && set -gx ASDF_DATA_DIR $HOME/.local/asdf && source /opt/asdf-vm/asdf.fish"
+      posix: "test -f /opt/asdf-vm/asdf.sh && export ASDF_DATA_DIR=$HOME/.local/asdf && source /opt/asdf-vm/asdf.sh"
+  - package: atuin
+    command: 
+      fish: "command -v atuin >/dev/null && atuin init fish | source"
+      posix: "command -v atuin >/dev/null && (test -n \"$BASH\" && atuin init bash || atuin init zsh)"
+  - package: direnv
+    command: 
+      fish: "command -v direnv >/dev/null && direnv hook fish | source"
+      posix: "command -v direnv >/dev/null && (test -n \"$BASH\" && eval \"$(direnv hook bash)\" || eval \"$(direnv hook zsh)\")"
+  - package: oc
+    command: 
+      fish: "command -v oc >/dev/null && oc completion fish | source"
+      posix: "command -v oc >/dev/null && (test -n \"$BASH\" && eval \"$(oc completion bash)\" || eval \"$(oc completion zsh)\")"
+  - package: starship
+    command: 
+      fish: "command -v starship >/dev/null && starship init fish | source && starship completions fish | source"
+      posix: "command -v starship >/dev/null && (test -n \"$BASH\" && (eval \"$(starship init bash)\" && eval \"$(starship completions bash)\")|| (eval \"$(starship init zsh)\" && eval \"$(starship completions zsh)\"))"
