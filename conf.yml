@@ -60,16 +60,16 @@ configurations:
   - package: atuin
     command: 
       fish: "command -v atuin >/dev/null && atuin init fish | source"
-      posix: "command -v atuin >/dev/null && (test -n \"$BASH\" && eval \"$(atuin init bash)\" || eval \"$(atuin init zsh)\")"
+      posix: "command -v atuin >/dev/null && eval \"$(atuin init $(echo $0))\""
   - package: direnv
     command: 
       fish: "command -v direnv >/dev/null && direnv hook fish | source"
-      posix: "command -v direnv >/dev/null && (test -n \"$BASH\" && eval \"$(direnv hook bash)\" || eval \"$(direnv hook zsh)\")"
+      posix: "command -v direnv >/dev/null && eval \"$(direnv hook $(basename $(echo $0)))\""
   - package: oc
     command: 
       fish: "command -v oc >/dev/null && oc completion fish | source"
-      posix: "command -v oc >/dev/null && (test -n \"$BASH\" && eval \"$(oc completion bash)\" || eval \"$(oc completion zsh)\")"
+      posix: "command -v oc >/dev/null && eval \"$(oc completion $(basename $(echo $0)))\""
   - package: starship
     command: 
       fish: "command -v starship >/dev/null && starship init fish | source && starship completions fish | source"
-      posix: "command -v starship >/dev/null && (test -n \"$BASH\" && (eval \"$(starship init bash)\" && eval \"$(starship completions bash)\") || (eval \"$(starship init zsh)\" && eval \"$(starship completions zsh)\"))"
+      posix: "command -v starship >/dev/null && (eval \"$(starship init $(basename $(echo $0)))\" && eval \"$(starship completions $(basename $(echo $0)))\"))"
