@@ -30,7 +30,7 @@ apply_conf_posix() {
     local COMMAND=$(echo "$2" | yq '.command.posix')
     local CONF_FILE="$BASH_CONF_DIR/_$PACKAGE"
 
-    if [[ -n "${COMMAND}" ]]; then
+    if [[ -n "${COMMAND}" ]] && [[ ! "${COMMAND}" == "null" ]]; then
 
         echo "=== Aplicando configurações do $PACKAGE para shells posix (bash/zsh) ==="
         echo "$COMMAND" >"$CONF_FILE"
@@ -45,7 +45,7 @@ apply_conf() {
     local CONF="$1"
     local PACKAGE=$(echo "$CONF" | yq '.package')
 
-    if [[ "$PACKAGE" != "null" ]] && [[ ! "${COMMAND}" == "null" ]]; then
+    if [[ "$PACKAGE" != "null" ]]; then
 
         apply_conf_posix "$PACKAGE" "$CONF"
         apply_conf_fish "$PACKAGE" "$CONF"
