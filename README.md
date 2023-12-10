@@ -13,7 +13,7 @@ As aplicações embarcadas nesta imagem podem ser vistas no arquivo `conf.yml` a
 ### Usando o distrobox (recomendado)
 
 ```console
-distrobox create -i ghcr.io/lucasvsr/boxkit -n boxkit
+distrobox create -i ghcr.io/lucasvsr/boxkit -a "--env SHELL=fish" -n boxkit # É recomendado o uso com o Fish Shell. Leia mais abaixo.
 distrobox enter boxkit
 ```
 
@@ -37,6 +37,7 @@ O container tem os três shells mais famosos: bash, zsh e fish. Para trocar o sh
 ```console
 distrobox create -a "--env SHELL=/bin/<SHELL>" -i ghcr.io/lucasvsr/boxkit -n boxkit
 ```
+É recomendado o uso com o `fish` visto que ele tem uma integração maior com alguns dos pacotes pré-instalados no container, como o atuin e o starship.
 
 ### Dotfiles (chezmoi)
 
