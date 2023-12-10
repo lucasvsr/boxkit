@@ -14,7 +14,6 @@ COPY --from=docker.io/testcab/yay /usr/share/zsh/site-functions/_yay /usr/local/
 COPY --from=docker.io/testcab/yay /usr/share/fish/vendor_completions.d/yay.fish /usr/local/share/fish/vendor_completions.d/yay.fish
 COPY scripts /tmp/scripts
 
-# ADD packages.json /tmp/packages.json
 ADD conf.yml /tmp/conf.yml
 
 RUN chmod 777 /tmp/scripts/*.sh

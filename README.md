@@ -6,7 +6,7 @@ Seguindo a recomendação do time do Fedora Silverblue, uso um container para in
 
 ## Aplicações instaladas nesta imagem
 
-As aplicações embarcadas nesta imagem podem ser vistas no arquivo `packages.json` agrupadas pelo gestor que irá instalá-las.
+As aplicações embarcadas nesta imagem podem ser vistas no arquivo `conf.yml` agrupadas pelo gestor que irá instalá-las.
 
 ## Como usar
 
