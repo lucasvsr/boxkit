@@ -60,7 +60,7 @@ configurations:
   - package: atuin
     command: 
       fish: "command -v atuin >/dev/null && atuin init fish | source"
-      posix: "command -v atuin >/dev/null && (test -n \"$BASH\" && atuin init bash || atuin init zsh)"
+      posix: "command -v atuin >/dev/null && (test -n \"$BASH\" && eval \"$(atuin init bash)\" || eval \"$(atuin init zsh)\")"
   - package: direnv
     command: 
       fish: "command -v direnv >/dev/null && direnv hook fish | source"
@@ -72,4 +72,4 @@ configurations:
   - package: starship
     command: 
       fish: "command -v starship >/dev/null && starship init fish | source && starship completions fish | source"
-      posix: "command -v starship >/dev/null && (test -n \"$BASH\" && (eval \"$(starship init bash)\" && eval \"$(starship completions bash)\")|| (eval \"$(starship init zsh)\" && eval \"$(starship completions zsh)\"))"
+      posix: "command -v starship >/dev/null && (test -n \"$BASH\" && (eval \"$(starship init bash)\" && eval \"$(starship completions bash)\") || (eval \"$(starship init zsh)\" && eval \"$(starship completions zsh)\"))"

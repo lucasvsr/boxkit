@@ -12,7 +12,7 @@ apply_conf_fish() {
 
     local PACKAGE="$1"
     local COMMAND=$(echo "$2" | yq '.command.fish')
-    local CONF_FILE=$FISH_CONF_DIR/"$PACKAGE.fish"
+    local CONF_FILE="$FISH_CONF_DIR/$PACKAGE.fish"
 
     if [[ -n "${COMMAND}" ]] && [[ ! "${COMMAND}" == "null" ]]; then
 
@@ -28,7 +28,7 @@ apply_conf_posix() {
 
     local PACKAGE="$1"
     local COMMAND=$(echo "$2" | yq '.command.posix')
-    local CONF_FILE="$BASH_CONF_DIR/_$PACKAGE"
+    local CONF_FILE="$BASH_CONF_DIR/$PACKAGE.sh"
 
     if [[ -n "${COMMAND}" ]] && [[ ! "${COMMAND}" == "null" ]]; then
 
@@ -66,3 +66,5 @@ if [[ ${#CONFS[@]} -gt 0 ]]; then
     done
 
 fi
+
+source /etc/profile
