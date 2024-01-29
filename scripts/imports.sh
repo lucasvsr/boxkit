@@ -9,6 +9,6 @@ readarray PACKAGES_IMPORT < <(yq -o=j -I=0 '.imports.packages[]' "$CONFIGURATION
 for package in "${PACKAGES_IMPORT[@]}"; do
 
     echo "=== Importando o $package do host ==="
-    ln -fs /usr/bin/distrobox-host-exec "$package"
+    ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/"$package"
 
 done
