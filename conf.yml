@@ -69,3 +69,9 @@ configurations:
   - package: starship
     command: 
       fish: "command -v starship >/dev/null && starship init fish | source && starship completions fish | source"
+imports:
+  - packages:
+    - docker 
+    - flatpak 
+    - rpm-ostree
+    - distrobox

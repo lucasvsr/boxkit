@@ -47,9 +47,6 @@ ENV LC_ALL "pt_BR.UTF-8"
 RUN userdel -r -f ${YAY_USER}
 RUN rm -rf /home/${YAY_USER}
 
-RUN ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/docker && \
-    ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/flatpak && \
-    ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/rpm-ostree && \
-    ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/transactional-update
+RUN /tmp/scripts/imports.sh
 
 RUN unset YAY_USER
