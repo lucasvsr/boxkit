@@ -13,7 +13,7 @@ As aplicações embarcadas nesta imagem podem ser vistas no arquivo `conf.yml` a
 ### Usando o distrobox (recomendado)
 
 ```console
-distrobox create -i ghcr.io/lucasvsr/boxkit -a "--env SHELL=fish" -n boxkit # É recomendado o uso com o Fish Shell. Leia mais abaixo.
+SHELL=/bin/fish distrobox create -i ghcr.io/lucasvsr/boxkit -n boxkit # É recomendado o uso com o Fish Shell. Leia mais abaixo.
 distrobox enter boxkit
 ```
 
