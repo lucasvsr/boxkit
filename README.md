@@ -35,7 +35,7 @@ Este projeto basea-se no [boxkit](https://github.com/ublue-os/boxkit) da organiz
 O container tem os três shells mais famosos: bash, zsh e fish. Para trocar o shell padrão basta criar um container informando a variável `$SHELL`:
 
 ```console
-distrobox create -a "--env SHELL=/bin/<SHELL>" -i ghcr.io/lucasvsr/boxkit -n boxkit
+SHELL=/bin/fish distrobox create -i ghcr.io/lucasvsr/boxkit -n boxkit
 ```
 É recomendado o uso com o `fish` visto que ele tem uma integração maior com alguns dos pacotes pré-instalados no container, como o atuin e o starship.
 
