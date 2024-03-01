@@ -2,13 +2,11 @@
 
 set -oue pipefail
 
-CONFIGURATIONS_FILE=/tmp/conf.yml
+PACKAGES_IMPORT=($@)
 
-readarray PACKAGES_IMPORT < <(yq '.imports.packages[]' "$CONFIGURATIONS_FILE")
+for PACKAGE in "${PACKAGES_IMPORT[@]}"; do
 
-for package in "${PACKAGES_IMPORT[@]}"; do
-
-    echo "=== Importando o $package do host ==="
-    ln -fs /usr/bin/distrobox-host-exec "/usr/local/bin/$(echo $package | tr -d '\n')"
+    echo "=== Importando o $PACKAGE do host ==="
+    ln -fs /usr/bin/distrobox-host-exec "/usr/local/bin/$(echo "$PACKAGE" | tr -d '\n')"
 
 done
