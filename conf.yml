@@ -55,7 +55,6 @@ packages:
     - docker 
     - flatpak 
     - rpm-ostree
-    - xdg-open
 configurations:
   - package: fish
     command: 
