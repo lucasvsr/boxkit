@@ -5,6 +5,7 @@ packages:
     - base-devel
     - bat
     - btop
+    - blesh
     - chezmoi
     - cosign
     - direnv
@@ -44,6 +45,7 @@ packages:
     - zellij
     - zsh
   yay:
+    - antigen
     - gitflow-avh
     - gogh-git
     - openfortivpn-webview-qt
@@ -55,24 +57,4 @@ packages:
     - docker 
     - flatpak 
     - rpm-ostree
-configurations:
-  - package: fish
-    command: 
-      fish: "command -v fish >/dev/null && set fish_greeting"
-  - package: asdf-vm
-    command: 
-      fish: "test -f /opt/asdf-vm/asdf.fish && set -gx ASDF_DATA_DIR $HOME/.local/asdf && source /opt/asdf-vm/asdf.fish"
-      posix: "test -f /opt/asdf-vm/asdf.sh && export ASDF_DATA_DIR=$HOME/.local/asdf && source /opt/asdf-vm/asdf.sh"
-  - package: atuin
-    command: 
-      fish: "command -v atuin >/dev/null && atuin init fish | source"
-  - package: direnv
-    command:
-      fish: "command -v direnv >/dev/null && direnv hook fish | source"
-  - package: oc
-    command: 
-      fish: "command -v oc >/dev/null && oc completion fish | source"
-  - package: starship
-    command: 
-      fish: "command -v starship >/dev/null && starship init fish | source && starship completions fish | source"
     

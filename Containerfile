@@ -40,8 +40,6 @@ RUN /tmp/scripts/install_from.sh yay
 USER root
 WORKDIR /
 
-RUN /tmp/scripts/configurations.sh
-
 RUN echo "LANG=pt_BR.UTF-8" > /etc/locale.conf && \
     echo "pt_BR.UTF-8 UTF-8" > /etc/locale.gen && locale-gen
 
