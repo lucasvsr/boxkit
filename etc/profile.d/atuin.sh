@@ -6,13 +6,13 @@ if [ "$(command -v atuin)" ]; then
         
         "bash")
             
-            eval "$(atuin init bash)"
+            echo 'command -v atuin > /dev/null && eval "$(atuin init bash)"' >> "$HOME"/.bashrc
 
         ;;
+
         "zsh")
 
-            . /usr/share/zsh/share/antigen.zsh
-            antigen bundle atuinsh/atuin@main
+            echo "antigen bundle atuinsh/atuin@main" >> "$HOME"/.zshrc
         
         ;;
         

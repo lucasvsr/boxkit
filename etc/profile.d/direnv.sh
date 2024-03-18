@@ -6,12 +6,12 @@ if [ "$(command -v direnv)" ]; then
         
         "bash")
             
-            eval "$(direnv hook bash)"
+            echo 'command -v direnv > /dev/null && eval "$(direnv hook bash)"' >> "$HOME"/.bashrc
 
         ;;
         "zsh")
 
-            eval "$(direnv hook zsh)"
+            echo 'command -v direnv > /dev/null && eval "$(direnv hook bash)"' >> "$HOME"/.zshrc
         
         ;;
         
