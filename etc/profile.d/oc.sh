@@ -6,12 +6,12 @@ if [ "$(command -v oc)" ]; then
         
         "bash")
             
-            eval "$(oc completion bash)"
+            echo 'command -v oc > /dev/null && eval "$(oc completion bash)"' >> "$HOME"/.bashrc
 
         ;;
         "zsh")
 
-            eval "$(oc completion zsh)"
+            echo 'command -v oc > /dev/null && eval "$(oc completion zsh)"' >> "$HOME"/.zshrc
         
         ;;
         
