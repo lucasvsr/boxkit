@@ -5,15 +5,14 @@ if [ "$(command -v starship)" ]; then
     case "$0" in
         
         "bash")
+
+            echo 'command -v starship > /dev/null && eval "$(starship init bash)" && eval "$(starship completions bash)"' >> "$HOME"/.bashrc
             
-            eval "$(starship init bash)"
-            eval "$(starship completions bash)"
 
         ;;
         "zsh")
 
-            eval "$(starship init zsh)"
-            eval "$(starship completions zsh)"
+            echo 'command -v starship > /dev/null && eval "$(starship init zsh)" && eval "$(starship completions zsh)"' >> "$HOME"/.zshrc
         
         ;;
         
