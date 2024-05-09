@@ -7,26 +7,20 @@ if [ "$(command -v "$MANAGER")" ] || [ "$MANAGER" == "host" ] && [ ${#PACKAGES[@
 
     echo "=== Instalando pacotes via $MANAGER ==="
 
-    if [[ "${MANAGER}" == "host" ]]; then
+    $MANAGER -Syu --noconfirm "${PACKAGES[@]}"
 
+    echo "=== Limpando cache ==="
+
+    case "${MANAGER}" in
+    'yay')
+        $MANAGER -Yc --noconfirm
+        ;;
+    'pacman')
+        $MANAGER -Scc --noconfirm
+        ;;
+    *)
         bash /tmp/scripts/imports.sh "${PACKAGES[@]}"
-
-    else
-
-        $MANAGER -Syu --noconfirm "${PACKAGES[@]}"
-
-        echo "=== Limpando cache ==="
-
-        case "${MANAGER}" in
-        'yay')
-            $MANAGER -Yc --noconfirm
-            ;;
-
-        *)
-            $MANAGER -Scc --noconfirm
-            ;;
-        esac
-
-    fi
+        ;;
+    esac
 
 fi
