@@ -3,7 +3,7 @@
 MANAGER=$1
 mapfile -t PACKAGES < <(yq -r ".packages.\"$MANAGER\"[]" </tmp/conf.yml)
 
-clean_cache() {
+clear_cache() {
 
     echo "=== Limpando cache ==="
 
@@ -34,6 +34,6 @@ if [ "$(command -v "$MANAGER")" ] || [ "$MANAGER" == "host" ] && [ ${#PACKAGES[@
         ;;
     esac
 
-    clean_cache "$MANAGER"
+    clear_cache "$MANAGER"
 
 fi
