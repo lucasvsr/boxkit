@@ -11,6 +11,7 @@ packages:
     - direnv
     - dog
     - exa
+    - fastfetch
     - fish
     - fisher
     - fzf
@@ -26,7 +27,6 @@ packages:
     - kubectl
     - make
     - micro
-    - neofetch
     - openfortivpn
     - openssh
     - openvpn
