@@ -1,4 +1,4 @@
-FROM quay.io/toolbx-images/archlinux-toolbox
+FROM quay.io/toolbx/arch-toolbox
 
 LABEL com.github.containers.toolbox="true" \
   usage="This image is meant to be used with the toolbox or distrobox command" \
@@ -12,18 +12,9 @@ COPY scripts /tmp/scripts
 
 ADD conf.yml /tmp/conf.yml
 
-RUN chmod 777 /tmp/scripts/*.sh
-RUN mkdir -p /etc/sudoers.d
-
-RUN useradd --system --create-home ${BUILDER} && echo "$BUILDER ALL=(ALL:ALL) NOPASSWD:ALL" | tee /etc/sudoers.d/${BUILDER}
-
-USER ${BUILDER}
-WORKDIR /home/${BUILDER}
-
-RUN /tmp/scripts/xdg-utils.sh
-
-USER root
-WORKDIR /
+RUN chmod 777 /tmp/scripts/*.sh && \
+    mkdir -p /etc/sudoers.d && \
+    useradd --system --create-home ${BUILDER} && echo "$BUILDER ALL=(ALL:ALL) NOPASSWD:ALL" | tee /etc/sudoers.d/${BUILDER}
 
 RUN /tmp/scripts/chaotic-aur.sh
 
@@ -46,7 +37,10 @@ RUN echo "LANG=pt_BR.UTF-8" > /etc/locale.conf && \
 ENV LANG "pt_BR.UTF-8"
 ENV LC_ALL "pt_BR.UTF-8"
 
-RUN userdel -r -f ${BUILDER}
-RUN rm -rf /home/${BUILDER}
-
-RUN unset BUILDER
+RUN userdel -r -f ${BUILDER} && \
+    rm -rf /home/${BUILDER} && \
+    sed -i '/${BUILDER} ALL=(ALL) NOPASSWD: ALL/d' /etc/sudoers && \
+    rm -rf \
+        /tmp/* \
+        /var/cache/pacman/pkg/* && \
+    unset BUILDER
