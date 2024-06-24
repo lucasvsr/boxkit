@@ -13,7 +13,7 @@ As aplicações embarcadas nesta imagem podem ser vistas no arquivo `conf.yml` a
 ### Usando o distrobox (recomendado)
 
 ```console
-SHELL=/bin/fish distrobox create -i ghcr.io/lucasvsr/boxkit -n boxkit # É recomendado o uso com o Fish Shell. Leia mais abaixo.
+distrobox create -i ghcr.io/lucasvsr/boxkit -n boxkit # É recomendado o uso com o Fish Shell. Leia mais abaixo.
 distrobox enter boxkit
 ```
 
@@ -32,11 +32,14 @@ Este projeto basea-se no [boxkit](https://github.com/ublue-os/boxkit) da organiz
 
 ### Shell
 
-O container tem os três shells mais famosos: bash, zsh e fish. Para trocar o shell padrão basta criar um container informando a variável `$SHELL`:
+O container tem os três shells mais famosos: bash, zsh e fish. Para trocar o shell padrão, basta entrar no container e usar o comando abaixo:
 
 ```console
-SHELL=/bin/fish distrobox create -i ghcr.io/lucasvsr/boxkit -n boxkit
+chsh -s /bin/<SHELL> $USER
 ```
+
+Após a execução deste comando reinicie seu terminal e verá que o novo shell será iniciado.
+
 É recomendado o uso com o `fish` visto que ele tem uma integração maior com alguns dos pacotes pré-instalados no container, como o atuin e o starship.
 
 ### Dotfiles (chezmoi)
@@ -53,6 +56,6 @@ chezmoi init <USER_GIT> --apply
 
 Este container já possui os github-cli (gh) e gitlab-cli (glab). Basta realizar login em algum dos serviços com os seus respectivos utilitários.
 
-### AUR (yay)
+### AUR (paru)
 
-O utilitário para instalação de pacotes do AUR neste container é o yay. Lembrando que é sempre recomendado uma leitura dos scripts oriundos do AUR.
+O utilitário para instalação de pacotes do AUR neste container é o paru. Lembrando que é sempre recomendado uma leitura dos scripts oriundos do AUR.

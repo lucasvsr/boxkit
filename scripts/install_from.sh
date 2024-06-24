@@ -8,17 +8,14 @@ clear_cache() {
     echo "=== Limpando cache ==="
 
     case "${1}" in
-    'yay')
-        $1 -Yc --noconfirm
-        ;;
-    'pacman')
-        $1 -Scc --noconfirm
-        ;;
-    *)
+    'host')
         echo "Caches limpos"
         ;;
+    *)
+        paru -c --noconfirm
+        ;;
     esac
-    
+
 }
 
 if [ "$(command -v "$MANAGER")" ] || [ "$MANAGER" == "host" ] && [ ${#PACKAGES[@]} -gt 0 ]; then
@@ -26,11 +23,11 @@ if [ "$(command -v "$MANAGER")" ] || [ "$MANAGER" == "host" ] && [ ${#PACKAGES[@
     echo "=== Instalando pacotes via $MANAGER ==="
 
     case "${MANAGER}" in
-    'yay' | 'pacman')
-        $MANAGER -Syu --noconfirm "${PACKAGES[@]}"
+    'host')
+        bash /tmp/scripts/imports.sh "${PACKAGES[@]}"
         ;;
     *)
-        bash /tmp/scripts/imports.sh "${PACKAGES[@]}"
+        paru -Syu --noconfirm "${PACKAGES[@]}"
         ;;
     esac
 

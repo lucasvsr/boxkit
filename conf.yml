@@ -37,12 +37,10 @@ packages:
     - tldr
     - tmux
     - trash-cli
-    - ttf-firacode-nerd
     - unzip
-    - yay
     - zellij
     - zsh
-  yay:
+  paru:
     - antigen
     - gitflow-avh
     - gogh-git
@@ -53,6 +51,5 @@ packages:
   host:
     - distrobox
     - docker 
-    - flatpak 
     - rpm-ostree
     
