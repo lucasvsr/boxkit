@@ -50,6 +50,7 @@ packages:
     - tmux-plugin-manager
   host:
     - distrobox
-    - docker 
+    - docker
+    - podman
     - rpm-ostree
     
