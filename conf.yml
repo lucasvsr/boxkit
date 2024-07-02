@@ -38,6 +38,8 @@ packages:
     - tmux
     - trash-cli
     - unzip
+    - xsel
+    - wlroots
     - zellij
     - zsh
   paru:
