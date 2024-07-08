@@ -21,6 +21,7 @@ packages:
     - glibc
     - gping
     - gum
+    - httpie
     - inetutils
     - jq
     - just
