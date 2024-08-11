@@ -1,5 +1,3 @@
-emulate sh -c 'source /etc/profile'
-
 if [ -d /etc/zprofile.d ]; then
 
     for source in /etc/zprofile.d/*.zsh; do

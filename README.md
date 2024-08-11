@@ -40,7 +40,11 @@ chsh -s /bin/<SHELL> $USER
 
 Após a execução deste comando reinicie seu terminal e verá que o novo shell será iniciado.
 
-É recomendado o uso com o `fish` visto que ele tem uma integração maior com alguns dos pacotes pré-instalados no container, como o atuin e o starship.
+Dependendo da ferramenta de terminal usada, é possível fazer esta configuração de forma gráfica e sem a necessidade de reiniciar o container.
+
+É recomendado o uso com o `fish` visto que ele tem uma integração maior com alguns dos pacotes pré-instalados no container, como o atuin e o starship. Caso queira usar o `zsh`, será necessário utilizar a flag `--login` para ter maior integração com as ferramentas instaladas no container. Do contrário, será necessário configurar o `~/.zshrc` para carregar as ferramentas instaladas no container.
+
+Não é recomendado o uso do bash devido àlgumas incompatibilidades com as ferramentas instaladas no container.
 
 ### Dotfiles (chezmoi)
 
