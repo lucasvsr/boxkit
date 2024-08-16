@@ -56,4 +56,5 @@ packages:
     - docker
     - podman
     - rpm-ostree
+    - notify-send
     
