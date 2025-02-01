@@ -25,6 +25,7 @@ packages:
     - inetutils
     - jq
     - just
+    - kind
     - kubectl
     - make
     - micro
